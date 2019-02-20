@@ -1,8 +1,13 @@
-<div class="login">
-  <img
-    class="login__image"
-    (click)="onLogin()"
-    src="/assets/face.png"
-    alt="fb"
-  />
+<div class="auth">
+  <div class="logout">
+    <a class="logout__link" (click)="onLogout()">Logout</a>
+  </div>
+  <div *ngIf="!loggedIn" class="login">
+    <img
+      class="login__image"
+      (click)="onLogin()"
+      src="/assets/face.png"
+      alt="fb"
+    />
+  </div>
 </div>

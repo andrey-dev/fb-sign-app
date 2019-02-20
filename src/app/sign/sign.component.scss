@@ -1,0 +1,25 @@
+.auth {
+  display: flex;
+  flex-direction: column;
+}
+
+.login {
+  align-self: center;
+}
+
+.login__image:hover {
+  cursor: pointer;
+}
+
+.logout {
+  align-self: flex-end;
+}
+
+.logout__link {
+  font-family: 'tahoma';
+  font-size: 19px;
+}
+
+.logout__link:hover {
+  cursor: pointer;
+}
