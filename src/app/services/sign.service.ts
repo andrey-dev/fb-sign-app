@@ -19,6 +19,7 @@ export class SignService {
     private storage: StorageService
   ) {
     this.authService.authState.subscribe(user => {
+      console.log(user);
       this.user = user;
       const isLogged = user != null;
       if (this.loggedIn !== isLogged) {

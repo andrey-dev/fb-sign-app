@@ -1,14 +1,16 @@
 <app-sign></app-sign>
 
-<button (click)="selectedPortal = myAnswerComponent">
-  My answer
-</button>
-<button (click)="selectedPortal = allAnswersComponent">
-  All answers
-</button>
-<div class="portal-outlet">
-  <ng-template [cdkPortalOutlet]="selectedPortal"></ng-template>
+<div *ngIf="loggedIn">
+  <button (click)="selectedPortal = myAnswerComponent">
+    My answer
+  </button>
+  <button (click)="selectedPortal = allAnswersComponent">
+    All answers
+  </button>
+  <div class="portal-outlet">
+    <ng-template [cdkPortalOutlet]="selectedPortal"></ng-template>
+  </div>
+  <ng-template #templatePortalContent
+    >Hello, this is a template portal</ng-template
+  >
 </div>
-<ng-template #templatePortalContent
-  >Hello, this is a template portal</ng-template
->
