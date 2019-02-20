@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {
   ComponentPortal,
-  Portal,
-  TemplatePortal,
-  CdkPortalOutlet
+  Portal /*, CdkPortalOutlet*/
 } from '@angular/cdk/portal';
 
 import { MyAnswerComponent } from '../my-answer/my-answer.component';

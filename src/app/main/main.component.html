@@ -1,6 +1,6 @@
 <app-sign></app-sign>
 
-<div *ngIf="loggedIn">
+<div [hidden]="!loggedIn">
   <button (click)="selectedPortal = myAnswerComponent">
     My answer
   </button>
@@ -10,7 +10,4 @@
   <div class="portal-outlet">
     <ng-template [cdkPortalOutlet]="selectedPortal"></ng-template>
   </div>
-  <ng-template #templatePortalContent
-    >Hello, this is a template portal</ng-template
-  >
 </div>

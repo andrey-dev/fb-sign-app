@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 import { SocialLoginModule, AuthServiceConfig } from 'angularx-social-login';
 import { FacebookLoginProvider } from 'angularx-social-login';
@@ -30,7 +31,7 @@ export function provideConfig() {
     MyAnswerComponent,
     AllAnswersComponent
   ],
-  imports: [BrowserModule, SocialLoginModule, PortalModule],
+  imports: [BrowserModule, SocialLoginModule, PortalModule, FormsModule],
   providers: [
     {
       provide: AuthServiceConfig,
