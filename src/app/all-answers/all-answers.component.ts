@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { StorageService, Answer } from '../services/storage.service';
 import { MatTableDataSource } from '@angular/material';
 import { MatDialog } from '@angular/material';
-import { AllAnswersPopupComponent } from './popup/all-answers-popup/all-answers-popup.component';
+import { AllAnswersPopupComponent } from './all-answers-popup/all-answers-popup.component';
 
 @Component({
   selector: 'app-all-answers',
