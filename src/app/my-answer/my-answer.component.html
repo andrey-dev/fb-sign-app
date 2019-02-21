@@ -1,17 +1,39 @@
 <form (ngSubmit)="onSend(f)" #f="ngForm">
-  <p>Me</p>
-  <input type="text" name="name" [ngModel]="name" />
-  <p>With me</p>
-  <input
-    type="number"
-    class="companions"
-    name="companions"
-    [ngModel]="currentCompanions"
-  />
-  <select name="status" class="status" name="status" [ngModel]="currentStatus">
-    <option value="{{ defaultStatus }}">Need to decide</option>
-    <option value="{{ comeStatus }}">I will definitely come</option>
-    <option value="{{ notComeStatus }}">I definitely will not come</option>
-  </select>
-  <button class="send-btn" type="submit">Send</button>
+  <div class="form">
+    <div class="my-answer">
+      <div>
+        <p>Me</p>
+        <input type="text" name="name" [ngModel]="name" />
+      </div>
+
+      <div class="companions">
+        <p class="companions__label">With me</p>
+        <input
+          type="number"
+          class="companions__val"
+          name="companions"
+          [ngModel]="currentCompanions"
+        />
+      </div>
+
+      <div>
+        <select
+          name="status"
+          class="status"
+          name="status"
+          [ngModel]="currentStatus"
+        >
+          <option value="{{ defaultStatus }}">Need to decide</option>
+          <option value="{{ comeStatus }}">I will definitely come</option>
+          <option value="{{ notComeStatus }}"
+            >I definitely will not come</option
+          >
+        </select>
+      </div>
+    </div>
+    <div class="send">
+      <hr />
+      <button class="send-btn" type="submit">Send</button>
+    </div>
+  </div>
 </form>
