@@ -2,37 +2,42 @@
   <div class="form">
     <div class="my-answer">
       <div>
-        <p>Me</p>
-        <input type="text" name="name" [ngModel]="name" />
+        <p class="label">Me</p>
+        <mat-form-field>
+          <input matInput name="name" readonly [ngModel]="name" />
+        </mat-form-field>
       </div>
 
       <div class="companions">
-        <p class="companions__label">With me</p>
-        <input
-          type="number"
-          class="companions__val"
-          name="companions"
-          [ngModel]="currentCompanions"
-        />
+        <p class="label companions__label">With me</p>
+        <mat-form-field class="companions__val">
+          <input
+            matInput
+            type="number"
+            name="companions"
+            [ngModel]="currentCompanions"
+            min="0"
+            max="100"
+          />
+        </mat-form-field>
       </div>
 
       <div>
-        <select
-          name="status"
-          class="status"
-          name="status"
-          [ngModel]="currentStatus"
-        >
-          <option value="{{ defaultStatus }}">Need to decide</option>
-          <option value="{{ comeStatus }}">I will definitely come</option>
-          <option value="{{ notComeStatus }}"
-            >I definitely will not come</option
-          >
-        </select>
+        <mat-form-field>
+          <mat-select class="status" name="status" [ngModel]="currentStatus">
+            <mat-option value="{{ defaultStatus }}">Need to decide</mat-option>
+            <mat-option value="{{ comeStatus }}"
+              >I will definitely come</mat-option
+            >
+            <mat-option value="{{ notComeStatus }}"
+              >I definitely will not come</mat-option
+            >
+          </mat-select>
+        </mat-form-field>
       </div>
     </div>
     <div class="send">
-      <hr />
+      <mat-divider></mat-divider>
       <button class="send-btn" type="submit">Send</button>
     </div>
   </div>

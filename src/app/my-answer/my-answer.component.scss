@@ -23,9 +23,17 @@
   margin-top: 20px;
 }
 
+.label {
+  font-weight: bold;
+}
+
 .companions__label {
   display: inline;
   margin-right: 10px;
+}
+
+.companions__val {
+  width: 113px;
 }
 
 .send {
