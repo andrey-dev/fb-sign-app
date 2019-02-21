@@ -1,0 +1,12 @@
+<div mat-dialog-content>
+  <p>
+    I, <span class="name">{{ data.name }}</span> want to reject my decision and
+    delete my answer
+  </p>
+</div>
+<div mat-dialog-actions>
+  <button [mat-dialog-close]="true">
+    Yes
+  </button>
+  <button (click)="onNoClicked()" cdkFocusInitial>No</button>
+</div>

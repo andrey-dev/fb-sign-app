@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { StorageService, Answer } from '../services/storage.service';
 import { MatTableDataSource } from '@angular/material';
+import { MatDialog } from '@angular/material';
+import { AllAnswersPopupComponent } from './popup/all-answers-popup/all-answers-popup.component';
 
 @Component({
   selector: 'app-all-answers',
@@ -18,7 +20,7 @@ export class AllAnswersComponent implements OnInit {
   ];
   public currentName: string;
 
-  constructor(private storage: StorageService) {}
+  constructor(private storage: StorageService, public dialog: MatDialog) {}
 
   ngOnInit() {
     this.answers = this.storage.getAllAnswers();
@@ -38,6 +40,20 @@ export class AllAnswersComponent implements OnInit {
     if (row.name !== this.currentName) {
       return;
     }
-    // popup
+    // Show popup
+    const dialogRef = this.dialog.open(AllAnswersPopupComponent, {
+      width: '300px',
+      data: { name: this.currentName }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (!result) {
+        return;
+      }
+      this.storage.removeAnswer();
+      this.dataSource.data = this.answers.filter((answer: Answer) => {
+        return answer.name !== this.currentName;
+      });
+    });
   }
 }

@@ -17,6 +17,7 @@ import { SignComponent } from './sign/sign.component';
 import { MyAnswerComponent } from './my-answer/my-answer.component';
 import { AllAnswersComponent } from './all-answers/all-answers.component';
 import { MyAnswerPopupComponent } from './my-answer/my-answer-popup.component';
+import { AllAnswersPopupComponent } from './all-answers/popup/all-answers-popup/all-answers-popup.component';
 
 const config = new AuthServiceConfig([
   {
@@ -36,7 +37,8 @@ export function provideConfig() {
     SignComponent,
     MyAnswerComponent,
     MyAnswerPopupComponent,
-    AllAnswersComponent
+    AllAnswersComponent,
+    AllAnswersPopupComponent
   ],
   imports: [
     BrowserModule,
@@ -58,7 +60,8 @@ export function provideConfig() {
   entryComponents: [
     MyAnswerComponent,
     AllAnswersComponent,
-    MyAnswerPopupComponent
+    MyAnswerPopupComponent,
+    AllAnswersPopupComponent
   ],
   bootstrap: [AppComponent]
 })
