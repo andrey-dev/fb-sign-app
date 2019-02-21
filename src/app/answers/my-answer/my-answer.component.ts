@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { MatDialog } from '@angular/material';
 
-import { StorageService } from '../services/storage.service';
+import { StorageService } from '../../services/storage.service';
 import { MyAnswerPopupComponent } from './my-answer-popup.component';
 
 @Component({
@@ -18,6 +18,7 @@ export class MyAnswerComponent implements OnInit {
   public currentStatus = this.defaultStatus;
   public currentCompanions = this.defaultCompanions;
   public name = '';
+  private readonly dialogWidth = '300px';
 
   constructor(private storage: StorageService, public dialog: MatDialog) {}
 
@@ -44,7 +45,7 @@ export class MyAnswerComponent implements OnInit {
 
   openDialog() {
     this.dialog.open(MyAnswerPopupComponent, {
-      width: '300px'
+      width: this.dialogWidth
     });
   }
 }

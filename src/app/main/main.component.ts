@@ -1,11 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  ComponentPortal,
-  Portal /*, CdkPortalOutlet*/
-} from '@angular/cdk/portal';
+import { ComponentPortal, Portal } from '@angular/cdk/portal';
 
-import { MyAnswerComponent } from '../my-answer/my-answer.component';
-import { AllAnswersComponent } from '../all-answers/all-answers.component';
+import { MyAnswerComponent } from '../answers/my-answer/my-answer.component';
+import { AllAnswersComponent } from '../answers/all-answers/all-answers.component';
 import { SignService } from '../services/sign.service';
 
 @Component({
@@ -26,7 +23,6 @@ export class MainComponent implements OnInit {
     this.allAnswersComponent = new ComponentPortal(AllAnswersComponent);
     this.selectedPortal = this.myAnswerComponent;
 
-    // TODO: recheck this logic
     this.signService.signStatusChanged.subscribe((isLogged: boolean) => {
       this.loggedIn = isLogged;
     });
