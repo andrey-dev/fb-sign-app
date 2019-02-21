@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { SocialLoginModule, AuthServiceConfig } from 'angularx-social-login';
 import { FacebookLoginProvider } from 'angularx-social-login';
 import { PortalModule } from '@angular/cdk/portal';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { MainComponent } from './main/main.component';
@@ -31,7 +32,13 @@ export function provideConfig() {
     MyAnswerComponent,
     AllAnswersComponent
   ],
-  imports: [BrowserModule, SocialLoginModule, PortalModule, FormsModule],
+  imports: [
+    BrowserModule,
+    SocialLoginModule,
+    PortalModule,
+    FormsModule,
+    BrowserAnimationsModule
+  ],
   providers: [
     {
       provide: AuthServiceConfig,
