@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { SignService } from '../services/sign.service';
 import { StorageService } from '../services/storage.service';
 
@@ -7,7 +7,7 @@ import { StorageService } from '../services/storage.service';
   templateUrl: './sign.component.html',
   styleUrls: ['./sign.component.scss']
 })
-export class SignComponent implements OnInit {
+export class SignComponent implements OnInit, OnDestroy {
   public loggedIn = false;
 
   constructor(
@@ -20,6 +20,10 @@ export class SignComponent implements OnInit {
     this.signService.signStatusChanged.subscribe((isLogged: boolean) => {
       this.loggedIn = isLogged;
     });
+  }
+
+  ngOnDestroy() {
+    this.signService.signStatusChanged.unsubscribe();
   }
 
   onLogout() {

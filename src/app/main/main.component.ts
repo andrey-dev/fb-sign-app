@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ComponentPortal, Portal } from '@angular/cdk/portal';
 
 import { MyAnswerComponent } from '../answers/my-answer/my-answer.component';
@@ -10,7 +10,7 @@ import { SignService } from '../services/sign.service';
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.scss']
 })
-export class MainComponent implements OnInit {
+export class MainComponent implements OnInit, OnDestroy {
   loggedIn = false;
   myAnswerComponent: ComponentPortal<MyAnswerComponent>;
   allAnswersComponent: ComponentPortal<AllAnswersComponent>;
@@ -26,5 +26,9 @@ export class MainComponent implements OnInit {
     this.signService.signStatusChanged.subscribe((isLogged: boolean) => {
       this.loggedIn = isLogged;
     });
+  }
+
+  ngOnDestroy() {
+    this.signService.signStatusChanged.unsubscribe();
   }
 }
