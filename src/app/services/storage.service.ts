@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 
-interface Answer {
+export interface Answer {
   name: string;
   photoUrl: string;
   companions: number;
-  status: number;
+  status: string;
 }
 
 @Injectable({
@@ -40,7 +40,20 @@ export class StorageService {
     return storageData ? storageData : this.currentAnswer;
   }
 
-  getAllAnswers() {}
+  getAllAnswers() {
+    const result = [];
+    for (let i = 0; i < localStorage.length; i++) {
+      const key = localStorage.key(i);
+      if (key === this.signState) {
+        continue;
+      }
+      const value = JSON.parse(localStorage.getItem(key));
+      if (value) {
+        result.push(value);
+      }
+    }
+    return result;
+  }
 
   setUserData(user: any) {
     if (!user) {
@@ -53,7 +66,7 @@ export class StorageService {
     this.currentId = user.id;
   }
 
-  setAnswerData(companions: number, status: number) {
+  setAnswerData(companions: number, status: string) {
     this.currentAnswer.companions = companions;
     this.currentAnswer.status = status;
   }

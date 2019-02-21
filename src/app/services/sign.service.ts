@@ -19,7 +19,6 @@ export class SignService {
     private storage: StorageService
   ) {
     this.authService.authState.subscribe(user => {
-      console.log('Facebook return user - ', user);
       this.user = user;
       this.storage.setUserData(this.user);
       const isLogged = user != null;

@@ -7,6 +7,9 @@ import { FacebookLoginProvider } from 'angularx-social-login';
 import { PortalModule } from '@angular/cdk/portal';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatTableModule } from '@angular/material/table';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { MainComponent } from './main/main.component';
@@ -41,7 +44,10 @@ export function provideConfig() {
     PortalModule,
     FormsModule,
     BrowserAnimationsModule,
-    MatDialogModule
+    MatDialogModule,
+    MatTableModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
   providers: [
     {

@@ -1,3 +1,50 @@
-<p>
-  all-answers works!
-</p>
+<div class="all-answers">
+  <mat-form-field>
+    <input
+      matInput
+      (keyup)="applyFilter($event.target.value)"
+      placeholder="Filter"
+    />
+  </mat-form-field>
+
+  <div class="table-container">
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+      <!-- Avatar Column -->
+      <ng-container matColumnDef="photoUrl">
+        <th mat-header-cell *matHeaderCellDef>Avatar</th>
+        <td mat-cell *matCellDef="let element">
+          <img src="{{ element.photoUrl }}" alt="avatar" />
+        </td>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Name</th>
+        <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+      </ng-container>
+
+      <!-- Status Column -->
+      <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef>Status</th>
+        <td mat-cell *matCellDef="let element">
+          <i [ngClass]="getStatusClass(element)" aria-hidden="true"></i>
+        </td>
+      </ng-container>
+
+      <!-- Companions Column -->
+      <ng-container matColumnDef="companions">
+        <th mat-header-cell *matHeaderCellDef>Companions</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.companions ? element.companions : '' }}
+        </td>
+      </ng-container>
+
+      <tr
+        mat-row
+        *matRowDef="let row; columns: displayedColumns"
+        [ngClass]="{ 'current-row': row.name === currentName }"
+        (click)="onClick(row)"
+      ></tr>
+    </table>
+  </div>
+</div>
