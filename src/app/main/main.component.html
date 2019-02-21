@@ -1,13 +1,17 @@
 <app-sign></app-sign>
 
-<div *ngIf="loggedIn">
-  <button (click)="selectedPortal = myAnswerComponent">
-    My answer
-  </button>
-  <button (click)="selectedPortal = allAnswersComponent">
-    All answers
-  </button>
-  <div class="portal-outlet">
-    <ng-template [cdkPortalOutlet]="selectedPortal"></ng-template>
+<div class="main">
+  <div class="tabs" *ngIf="loggedIn">
+    <button (click)="selectedPortal = myAnswerComponent">
+      My answer
+    </button>
+    <button (click)="selectedPortal = allAnswersComponent">
+      All answers
+    </button>
+  </div>
+  <div class="answers" *ngIf="loggedIn">
+    <div class="portal-outlet">
+      <ng-template [cdkPortalOutlet]="selectedPortal"></ng-template>
+    </div>
   </div>
 </div>

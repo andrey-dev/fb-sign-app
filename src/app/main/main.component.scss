@@ -1,7 +1,26 @@
+.main {
+  height: 100vh;
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+}
+
+.answers {
+  width: auto;
+  height: auto;
+  display: flex;
+  justify-content: center;
+}
+
+.tabs {
+  display: flex;
+  justify-content: center;
+}
+
 .portal-outlet {
   margin-bottom: 10px;
   padding: 10px;
   border: 1px solid black;
-  width: 250px;
-  height: 250px;
+  width: 350px;
+  height: 350px;
 }

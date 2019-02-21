@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { MatDialog } from '@angular/material';
+
 import { StorageService } from '../services/storage.service';
+import { MyAnswerPopupComponent } from './my-answer-popup.component';
 
 @Component({
   selector: 'app-my-answer',
@@ -16,7 +19,7 @@ export class MyAnswerComponent implements OnInit {
   public currentCompanions = this.defaultCompanions;
   public name = '';
 
-  constructor(private storage: StorageService) {}
+  constructor(private storage: StorageService, public dialog: MatDialog) {}
 
   ngOnInit() {
     this.getAnswerFromStorage();
@@ -32,10 +35,16 @@ export class MyAnswerComponent implements OnInit {
   onSend(form: NgForm) {
     if (form.value.status === this.defaultStatus) {
       this.storage.removeAnswer();
-      // Show popup
+      this.openDialog();
       return;
     }
     this.storage.setAnswerData(form.value.companions, form.value.status);
     this.storage.saveAnswer();
+  }
+
+  openDialog() {
+    this.dialog.open(MyAnswerPopupComponent, {
+      width: '300px'
+    });
   }
 }

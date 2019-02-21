@@ -6,12 +6,14 @@ import { SocialLoginModule, AuthServiceConfig } from 'angularx-social-login';
 import { FacebookLoginProvider } from 'angularx-social-login';
 import { PortalModule } from '@angular/cdk/portal';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatDialogModule } from '@angular/material/dialog';
 
 import { AppComponent } from './app.component';
 import { MainComponent } from './main/main.component';
 import { SignComponent } from './sign/sign.component';
 import { MyAnswerComponent } from './my-answer/my-answer.component';
 import { AllAnswersComponent } from './all-answers/all-answers.component';
+import { MyAnswerPopupComponent } from './my-answer/my-answer-popup.component';
 
 const config = new AuthServiceConfig([
   {
@@ -30,6 +32,7 @@ export function provideConfig() {
     MainComponent,
     SignComponent,
     MyAnswerComponent,
+    MyAnswerPopupComponent,
     AllAnswersComponent
   ],
   imports: [
@@ -37,7 +40,8 @@ export function provideConfig() {
     SocialLoginModule,
     PortalModule,
     FormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatDialogModule
   ],
   providers: [
     {
@@ -45,7 +49,11 @@ export function provideConfig() {
       useFactory: provideConfig
     }
   ],
-  entryComponents: [MyAnswerComponent, AllAnswersComponent],
+  entryComponents: [
+    MyAnswerComponent,
+    AllAnswersComponent,
+    MyAnswerPopupComponent
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
