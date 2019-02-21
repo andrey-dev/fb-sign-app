@@ -36,16 +36,17 @@ export class StorageService {
   }
 
   getAnswer() {
-    const data = localStorage.getItem(this.currentId);
-    return JSON.parse(data);
+    const storageData = JSON.parse(localStorage.getItem(this.currentId));
+    return storageData ? storageData : this.currentAnswer;
   }
 
   getAllAnswers() {}
 
-  setUserData(user) {
+  setUserData(user: any) {
     if (!user) {
       this.currentAnswer = {} as Answer;
       this.currentId = '';
+      return;
     }
     this.currentAnswer.photoUrl = user.photoUrl;
     this.currentAnswer.name = user.name;
@@ -55,17 +56,5 @@ export class StorageService {
   setAnswerData(companions: number, status: number) {
     this.currentAnswer.companions = companions;
     this.currentAnswer.status = status;
-  }
-
-  setData(key: string, value: string) {
-    localStorage.setItem(key, value);
-  }
-
-  getData(key: string) {
-    localStorage.getItem(key);
-  }
-
-  deleteData(key: string) {
-    localStorage.removeItem(key);
   }
 }

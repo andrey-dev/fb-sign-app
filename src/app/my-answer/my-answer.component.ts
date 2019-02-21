@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { SocialUser } from 'angularx-social-login';
-import { SignService } from '../services/sign.service';
 import { NgForm } from '@angular/forms';
 import { StorageService } from '../services/storage.service';
 
@@ -18,39 +16,25 @@ export class MyAnswerComponent implements OnInit {
   public currentCompanions = this.defaultCompanions;
   public name = '';
 
-  constructor(
-    private signService: SignService,
-    private storage: StorageService
-  ) {}
+  constructor(private storage: StorageService) {}
 
   ngOnInit() {
-    this.signService.userDataChanged.subscribe((user: SocialUser) => {
-      if (user) {
-        if (this.getAnswerFromStorage()) {
-          return;
-        }
-        this.name = user.name;
-      }
-    });
+    this.getAnswerFromStorage();
   }
 
-  getAnswerFromStorage(): boolean {
+  getAnswerFromStorage(): void {
     const answer = this.storage.getAnswer();
-    if (!answer) {
-      return false;
-    }
     this.name = answer.name;
-    this.currentStatus = answer.status;
-    this.currentCompanions = answer.companions;
+    this.currentStatus = answer.status || this.currentStatus;
+    this.currentCompanions = answer.companions || this.currentCompanions;
   }
 
   onSend(form: NgForm) {
     if (form.value.status === this.defaultStatus) {
-      // If data in storage - delete
       this.storage.removeAnswer();
+      // Show popup
       return;
     }
-    // Save to storage
     this.storage.setAnswerData(form.value.companions, form.value.status);
     this.storage.saveAnswer();
   }

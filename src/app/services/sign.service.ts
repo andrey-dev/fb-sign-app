@@ -11,7 +11,6 @@ import { StorageService } from './storage.service';
 })
 export class SignService {
   public signStatusChanged = new EventEmitter<boolean>();
-  public userDataChanged = new EventEmitter<SocialUser>();
   private user: SocialUser;
   private loggedIn: boolean;
 
@@ -23,7 +22,6 @@ export class SignService {
       console.log('Facebook return user - ', user);
       this.user = user;
       this.storage.setUserData(this.user);
-      this.userDataChanged.emit(this.user);
       const isLogged = user != null;
       if (this.loggedIn !== isLogged) {
         this.loggedIn = isLogged;

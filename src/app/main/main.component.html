@@ -1,6 +1,6 @@
 <app-sign></app-sign>
 
-<div [hidden]="!loggedIn">
+<div *ngIf="loggedIn">
   <button (click)="selectedPortal = myAnswerComponent">
     My answer
   </button>
