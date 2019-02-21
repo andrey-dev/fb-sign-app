@@ -1,24 +1,15 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 
 import { SocialLoginModule, AuthServiceConfig } from 'angularx-social-login';
 import { FacebookLoginProvider } from 'angularx-social-login';
 import { PortalModule } from '@angular/cdk/portal';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatDialogModule } from '@angular/material/dialog';
-import { MatTableModule } from '@angular/material/table';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule, MatSelectModule } from '@angular/material';
-import { MatDividerModule } from '@angular/material/divider';
 
 import { AppComponent } from './app.component';
 import { MainComponent } from './main/main.component';
-import { SignComponent } from './sign/sign.component';
-import { MyAnswerComponent } from './my-answer/my-answer.component';
-import { AllAnswersComponent } from './all-answers/all-answers.component';
-import { MyAnswerPopupComponent } from './my-answer/my-answer-popup.component';
-import { AllAnswersPopupComponent } from './all-answers/all-answers-popup/all-answers-popup.component';
+import { AnswersModule } from './answers/answers.module';
+import { SignModule } from './sign/sign.module';
 
 const config = new AuthServiceConfig([
   {
@@ -32,39 +23,20 @@ export function provideConfig() {
 }
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    MainComponent,
-    SignComponent,
-    MyAnswerComponent,
-    MyAnswerPopupComponent,
-    AllAnswersComponent,
-    AllAnswersPopupComponent
-  ],
+  declarations: [AppComponent, MainComponent],
   imports: [
     BrowserModule,
     SocialLoginModule,
     PortalModule,
-    FormsModule,
     BrowserAnimationsModule,
-    MatDialogModule,
-    MatTableModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatSelectModule,
-    MatDividerModule
+    AnswersModule,
+    SignModule
   ],
   providers: [
     {
       provide: AuthServiceConfig,
       useFactory: provideConfig
     }
-  ],
-  entryComponents: [
-    MyAnswerComponent,
-    AllAnswersComponent,
-    MyAnswerPopupComponent,
-    AllAnswersPopupComponent
   ],
   bootstrap: [AppComponent]
 })
